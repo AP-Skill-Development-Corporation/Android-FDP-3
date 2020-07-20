@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".MainActivity">
+
+   <RatingBar
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/myratingBar"
+       android:layout_margin="10dp"
+       android:stepSize="1"
+       android:layout_gravity="center"
+       />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="user rating "
+        android:textSize="30sp"
+        android:id="@+id/ratingBar_tv"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"/>
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progress="40"
+        android:max="100"
+        android:layout_margin="10dp"
+        android:id="@+id/sk"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="seek bar Progress"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:id="@+id/tv_seekbar"/>
+</LinearLayout>

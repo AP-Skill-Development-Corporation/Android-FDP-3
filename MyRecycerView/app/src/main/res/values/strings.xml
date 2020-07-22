@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">MyRecycerView</string>
+    <string-array name="clg_names">
+        <item>Muneiah Tellakula</item>
+        <item>Aits Tirupathi</item>
+        <item>AITS GITHUB</item>
+        <item>Cbit PDTR</item>
+        <item>ANDROID TEAM</item>
+        <item>Sri Vidynikethan</item>
+        <item>Vignan University</item>
+        <item>KSRM KADAPA</item>
+        <item>AITS PYTHON</item>
+        <item>CBIT PYTHON</item>
+    </string-array>
+    <string-array name="subtitle">
+        <item>2015</item>
+        <item>2015</item>
+        <item>2016</item>
+        <item>2017</item>
+        <item>2018</item>
+        <item>2019</item>
+        <item>2020</item>
+        <item>2020</item>
+        <item>2018</item>
+        <item>2019</item>
+    </string-array>
+</resources>

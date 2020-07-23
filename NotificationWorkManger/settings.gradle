@@ -1,0 +1,2 @@
+rootProject.name='NotificationWorkManger'
+include ':app'

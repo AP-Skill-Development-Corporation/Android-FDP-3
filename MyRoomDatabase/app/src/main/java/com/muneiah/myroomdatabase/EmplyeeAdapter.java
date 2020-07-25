@@ -1,6 +1,7 @@
 package com.muneiah.myroomdatabase;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,10 @@ public class EmplyeeAdapter extends RecyclerView.Adapter<EmplyeeAdapter.Employee
         holder.empdelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity.empDb.employeeDAO().delete(employeeEntityList.get(position));
+      //for normdb   //MainActivity.empDb.employeeDAO().delete(employeeEntityList.get(position));
+            //for live data
+                MainActivity.viewModel.delete(employeeEntityList.get(position));
+
             }
         });
 
@@ -53,6 +57,18 @@ public class EmplyeeAdapter extends RecyclerView.Adapter<EmplyeeAdapter.Employee
             empedit=itemView.findViewById(R.id.update_row);
             empname=itemView.findViewById(R.id.emp_name_row);
             empid=itemView.findViewById(R.id.emp_id_row);
+            empedit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String namevalue=empname.getText().toString();
+                    String idvaleue=empid.getText().toString();
+                    Intent myintent=new Intent(ctx,UpdateActivity.class);
+                    myintent.putExtra("name",namevalue);
+                    myintent.putExtra("id",idvaleue);
+                    ctx.startActivity(myintent);
+
+                }
+            });
 
         }
     }

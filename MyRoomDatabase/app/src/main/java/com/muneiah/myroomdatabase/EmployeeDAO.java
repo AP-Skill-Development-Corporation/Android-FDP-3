@@ -1,5 +1,6 @@
 package com.muneiah.myroomdatabase;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -20,5 +21,6 @@ public interface EmployeeDAO {
     public void delete(EmployeeEntity employeeEntity);
 
     @Query("SELECT * FROM employee_table")
-    public List<EmployeeEntity> retrive();
+    //public List<EmployeeEntity> retrive();//nor database
+    public LiveData<List<EmployeeEntity>> liveData();//for live data
 }

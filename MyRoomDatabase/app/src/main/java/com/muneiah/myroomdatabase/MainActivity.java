@@ -1,6 +1,9 @@
 package com.muneiah.myroomdatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -19,6 +22,8 @@ static EmployeeDatabase empDb;
 EmplyeeAdapter adapter;
 List<EmployeeEntity> employeeEntityList;
 EmployeeEntity empEntity;
+static EmployeeViewModel viewModel;
+LiveData<List<EmployeeEntity>> listLiveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +32,19 @@ EmployeeEntity empEntity;
         name=findViewById(R.id.emp_name);
         id=findViewById(R.id.emp_id);
         rec=findViewById(R.id.recycler);
-        empDb= Room.databaseBuilder(this,EmployeeDatabase.class,"employee")
+        /*empDb= Room.databaseBuilder(this,EmployeeDatabase.class,"employee")
                 .allowMainThreadQueries()
-                .build();
+                .build();*/   //for normal Db
+        viewModel=new ViewModelProvider(this).get(EmployeeViewModel.class);
+        viewModel.liveData().observe(this, new Observer<List<EmployeeEntity>>() {
+            @Override
+            public void onChanged(List<EmployeeEntity> employeeEntities) {
+                adapter=new EmplyeeAdapter(MainActivity.this,employeeEntities);
+                rec.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                rec.setAdapter(adapter);
+            }
+        });
+
     }
 
     public void saveData(View view) {
@@ -38,16 +53,18 @@ EmployeeEntity empEntity;
         empEntity=new EmployeeEntity();
         empEntity.setId(empoyeeid);
         empEntity.setName(empoyeeName);
-        empDb.employeeDAO().insert(empEntity);
+       // empDb.employeeDAO().insert(empEntity); for normal db
+        //for live data insert
+        viewModel.insert(empEntity);
         Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
     }
 
-    public void retriveData(View view) {
+    /*public void retriveData(View view) {
         employeeEntityList=empDb.employeeDAO().retrive();
         adapter=new EmplyeeAdapter(this,employeeEntityList);
         rec.setLayoutManager(new LinearLayoutManager(this));
         rec.setAdapter(adapter);
 
 
-    }
+    }*/
 }

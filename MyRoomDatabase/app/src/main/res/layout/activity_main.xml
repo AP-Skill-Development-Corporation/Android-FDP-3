@@ -31,11 +31,11 @@
         android:layout_height="wrap_content"
         android:onClick="saveData"
         android:text="Save" />
-    <Button
+    <!--<Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="retriveData"
-        android:text="retrive" />
+        android:text="retrive" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
